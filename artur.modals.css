@@ -1,0 +1,93 @@
+form.artur-modal-window
+{
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    margin-left: -200px;
+    z-index: 888 !important;
+    width: 400px;
+    padding: 15px;
+    border: 3px solid rgb(221, 221, 221);
+    background-color: rgb(239, 239, 239);
+    border-radius: 2px;
+}
+
+form.artur-modal-window > div.close-modal-window
+{
+    float: right;
+}
+
+form.artur-modal-window > div.close-modal-window:hover
+{
+    cursor: pointer;
+}
+
+form.artur-modal-window > label.modal-window-caption
+{
+    font-weight: bold !important;
+    font-size: 14px !important;
+}
+
+form.artur-modal-window > div.form-part > div.wsite-form-field
+{
+    margin: 5px 0;
+}
+
+form.artur-modal-window > hr.between-form-caption-and-form-content
+{
+    margin-bottom: 20px;
+}
+
+iframe.secret-iframe#secret-iframe
+{
+    width: 0;
+    height: 0;
+    border: 0;
+    opacity: 0;
+}
+
+#artur-super-overlay
+{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 777;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+form#email-tour-modal-window,
+form#contact-us-modal-window,
+form#idle-pop-up-modal-window
+{
+    display: none;
+}
+
+form#idle-pop-up-modal-window div.form-part a.almost-invisible-and-sly-link
+{
+    margin-left: 5%;
+}
+
+form#idle-pop-up-modal-window div.title-and-description
+{
+    font-size: 14px;
+    line-height: 22px;
+}
+
+form#idle-pop-up-modal-window div.title-and-description > img
+{
+    float: left;
+    margin-right: 5px;
+}
+
+form#idle-pop-up-modal-window div.title-and-description > label
+{
+    font-weight: bold !important;
+}
+
+form#idle-pop-up-modal-window hr.between-form-caption-and-form-content
+{
+    width: 100%;
+}

@@ -1,0 +1,182 @@
+<script language="JavaScript" type="text/javascript" charset="UTF-8">
+    $(document).ready
+    (
+        function()
+        {
+            $.cookie("do_not_show_idle_pop_up", 1, { expires: 30 });
+
+            var doSomeActionsForUsersFromLanding = function()
+            {
+                var pages = [];
+
+                pages.push
+                ({
+                    'number': '0',
+                    'referrer': '',
+                    'pathToRedirect': 'http://www.firebirdtours.com/',
+                    'message': 'You will be taken to Main'
+                });
+
+                pages.push
+                ({
+                    'number': '1',
+                    'referrer': 'firebirdtours.com/eastern-europe.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/europe.html',
+                    'message': 'You will be taken to European tours'
+                });
+
+                pages.push
+                ({
+                    'number': '2',
+                    'referrer': 'firebirdtours.com/tours-to-scandinavia.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/scandinavian-tours.html',
+                    'message': 'You will be taken to Scandinavian tours'
+                });
+
+                pages.push
+                ({
+                    'number': '3',
+                    'referrer': 'http://www.firebirdtours.com/western-europe.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/quintessential-europe.html',
+                    'message': 'You will be taken to program'
+                });
+
+                pages.push
+                ({
+                    'number': '4',
+                    'referrer': 'firebirdtours.com/georgia--caucasus.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/caucasus.html',
+                    'message': 'You will be taken to Caucasus tour'
+                });
+
+                pages.push
+                ({
+                    'number': '5',
+                    'referrer': 'firebirdtours.com/central-asia.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/uzbekistan-kyrgyzstan.html',
+                    'message': 'You will be taken to Central Asia'
+                });
+
+                pages.push
+                ({
+                    'number': '6',
+                    'referrer': 'firebirdtours.com/tours-to-sri-lanka.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/sri-lanka.html',
+                    'message': 'You will be taken to Sri Lanka page'
+                });
+
+                pages.push
+                ({
+                    'number': '7',
+                    'referrer': 'http://www.firebirdtours.com/medical-tourism.html',
+                    'pathToRedirect': 'http://www.medtravel.sg/medicina/lechenie-v-singapure-etapy-organizacii-poezdki',
+                    'message': 'Через несколько секунд вы будете перенаправлены на программу'
+                });
+
+                pages.push
+                ({
+                    'number': '8',
+                    'referrer': 'http://www.firebirdtours.com/tours-to-japan.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/japan.html',
+                    'message': 'You will be taken to Japan tour page'
+                });
+
+                pages.push
+                ({
+                    'number': '9',
+                    'referrer': 'http://www.firebirdtours.com/volga-dream.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/volga-dream-cruise.html',
+                    'message': 'You will take to the Volga Dream'
+                });
+
+                pages.push
+                ({
+                    'number': '10',
+                    'referrer': 'http://www.firebirdtours.com/tours-to-africa.html',
+                    'pathToRedirect': 'http://www.firebirdtours.com/africa.html',
+                    'message': 'You will take to the detailed itinerary'
+                });
+
+                var referrer = document.location.href.split("?referrer=")[1];
+
+                var whatWeMustDoHere = {
+                    'pathToRedirect': 'http://www.firebirdtours.com/',
+                    'message': 'You will be taken to Main'
+                };
+
+                if(typeof referrer !== "undefined")
+                {
+                    // очистим от GET параметров
+                    referrer = referrer.split("&")[0];
+                    referrer = referrer.split("?")[0];
+
+                    // очистим от решёточек
+                    referrer = referrer.split("#")[0];
+
+                    console.log(referrer);
+
+                    for(var i = 0; i < pages.length; i++)
+                    {
+                        if
+                        (
+                            ""             + pages[i].referrer == referrer ||
+                            "//"           + pages[i].referrer == referrer ||
+                            "www."         + pages[i].referrer == referrer ||
+                            "http://"      + pages[i].referrer == referrer ||
+                            "https://"     + pages[i].referrer == referrer ||
+                            "http://www."  + pages[i].referrer == referrer ||
+                            "https://www." + pages[i].referrer == referrer
+                        )
+                        {
+                            whatWeMustDoHere = pages[i];
+
+                            break;
+                        }
+                    }
+                }
+
+                var startFrom = 5;
+
+                $("div#header_container > div#draggable_area > div.wsite-elements.wsite-not-footer").after
+                (
+                    '<div class="paragraph" style="text-align: left;">'
+                        +
+                        whatWeMustDoHere.message + ' page in '
+                        +
+                        '<span class="how-much-are-left">' + startFrom + '</span>'
+                        +
+                    '</div>'
+                );
+
+                setInterval
+                (
+                    function()
+                    {
+                        if(startFrom <= 0)
+                        {
+                            startFrom = 0;
+                        }
+                        else
+                        {
+                            startFrom -= 1;
+                        }
+
+                        $("span.how-much-are-left").html(startFrom);
+                    },
+                    1000
+                );
+
+                setTimeout
+                (
+                    function()
+                    {
+                        window.location.href = whatWeMustDoHere.pathToRedirect;
+                    },
+                    5000
+                );
+            };
+
+            doSomeActionsForUsersFromLanding();
+        }
+    );
+</script>
