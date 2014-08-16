@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 		var returnURLField = self.find("input[type=hidden][name=retURL]");
 		returnURLField.val(returnURLField.val() + "?referrer=" + currentUrlAddress);
-		self.on('submit', function() {
+		self.on('submit', function(event) {
 			var inputs = $(this).find("input[required]");
 			var selects = $(this).find("select[required]");
 			var textareas = $(this).find("textarea[required]");
@@ -87,6 +87,10 @@ $(document).ready(function() {
 					if(fields[i][j].value == '')
 					{
 						$(fields[i][j]).notify("Please, fill this field");
+
+						event.returnValue = false;
+						event.preventDefault();
+						event.stopPropagation();
 						return false;
 					}
 				}
@@ -153,7 +157,7 @@ $(document).ready(function() {
 		$("form#idle-pop-up-modal-window").on("submit", function() {
 			setTimeout(function() {
 				$.cookie("do_not_show_idle_pop_up", 1, { expires: 30 });
-				ArturModals.closeModalWindow("idle-pop-up-modal-window", true);
+				ArturModals.closeModalWindow("idle-pop-up-modal-window", false);
 				$.notify("Welcome to FireBird Experiences! We have received your details and we promise to send you only relevant FireBird Tours updates.", "success");
 			}, 1000);
 		});
