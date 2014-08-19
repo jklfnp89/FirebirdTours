@@ -75,11 +75,6 @@ $(document).ready(function() {
 		self.append('<input type="hidden" name="IP_city__c" value="' + $_USER.city + '">');
 		self.append('<input type="hidden" name="IP_country__c" value="' + $_USER.country + '">');
 
-		self.find("input[type=tel][transformer=intlTelInput]").intlTelInput({
-			defaultCountry: $_USER.country.toLowerCase(),
-			preferredCountries: [ "us", "ca", "au", "hk", "sg", "gb" ]
-		});
-
 		if(self.find("input[type=hidden][name=Itinerary__c]").length <= 0)
 		{
 			self.append('<input type="hidden" name="Itinerary__c" value="' + $_URL.justAddress + '">');
@@ -113,26 +108,33 @@ $(document).ready(function() {
 
 		// country + phone
 
+		var intlTelField = self.find("input[type=tel][transformer=intlTelInput]").intlTelInput({
+			defaultCountry: $_USER.country.toLowerCase(),
+			preferredCountries: [ "us", "ca", "au", "hk", "sg", "gb" ]
+		});
+
 		self.find("select[name=country]").val($_USER.country.toUpperCase());
 		self.find("select[name=country][transformer=selectize]").selectize({
-			"dropdownParent":"body",
+			"dropdownParent": "body",
 			onChange: function(value) {
+
+				console.log(this);
+				console.log("====== ^^ this, vv value ======");
+				console.log(value);
 
 				var phoneField = self.find("input[type=tel][name=phone]");
 				var customNotesField = self.find('input[type=hidden][name=custom_notes__c]');
 
-				if($.trim(value) != "")
+				if(intlTelField.length > 0)
 				{
-					if($.isNumeric(value))
-					{
-						phoneField.val("+" + parseInt(value) + " ");
-						customNotesField.val("Country: " + "+" + value);
-					}
-					else
-					{
-						phoneField.val("");
-						customNotesField.val("Country: " + value);
-					}
+					intlTelField.selectCountry(value.toLowerCase());
+					customNotesField.val("Country: " + value + " (" + intlTelField.getSelectedCountryData().name + "[" + intlTelField.getSelectedCountryData().dialCode + "])");
+				}
+				else
+				{
+					// TODO: подгрузить код страны в поле с телефоном и положить его в поле Country
+
+					customNotesField.val("Country: " + value);
 				}
 
 				// ...
