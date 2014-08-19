@@ -2,6 +2,12 @@ $(document).ready(function() {
 
 	// ...
 
+	var $_USER = {};
+
+	$.get("http://ip" + "in" + "fo.io", function(response) {
+		$_USER = response;
+	}, "jsonp");
+
 	var $_URL = {
 		'fullAddress': window.location.href,
 		'justAddress': window.location.protocol + '//' + window.location.host + window.location.pathname,
@@ -65,7 +71,12 @@ $(document).ready(function() {
 
 		self.append('<input type="hidden" name="Browser__c" value="' + browserName + '">');
 
+		self.append('<input type="hidden" name="IP_address__c" value="' + $_USER.ip + '">');
+		self.append('<input type="hidden" name="IP_city__c" value="' + $_USER.city + '">');
+		self.append('<input type="hidden" name="IP_country__c" value="' + $_USER.country + '">');
+
 		self.find("input[type=tel][transformer=intlTelInput]").intlTelInput({
+			defaultCountry: $_USER.country.toLowerCase(),
 			preferredCountries: [ "us", "ca", "au", "hk", "sg", "gb" ]
 		});
 
@@ -102,6 +113,7 @@ $(document).ready(function() {
 
 		// country + phone
 
+		self.find("select[name=country]").val($_USER.country.toUpperCase());
 		self.find("select[name=country][transformer=selectize]").selectize({
 			"dropdownParent":"body",
 			onChange: function(value) {
