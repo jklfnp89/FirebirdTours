@@ -162,7 +162,7 @@ $(document).ready(function() {
 
 	$("a.print-tour").attr("href", $_URL.justAddress + "?printVersion=true").attr("target", "_blank");
 
-	if($_GET['print_version'] == "true")
+	if($_GET['printVersion'] == "true")
 	{
 		var elementsToDelete = ["#copyright_area_wrapper", "#draggable_footer_wrapper", "#landing_header", "#header_container", ".wsite-button", "#toTop", ".zopim", ".email-tour-modal-window-button", "a.empty-link.print-tour", "td.single > a.artur-custom-button.artur-custom-button-red.contact-us-modal-window-button", "td.single > a.artur-custom-button.artur-custom-button-default.contact-us-modal-window-button"];
 		for(var i = 0; i < elementsToDelete.length; i++)
@@ -171,7 +171,19 @@ $(document).ready(function() {
 			$(elementsToDelete[i]).remove();
 		}
 		$(".landing-layout #content_wrapper").css({"top": "0px"});
-		$("div#wsite-content").prepend("<div style='float: right; margin: -15px 0 15px 0;'>" + "<div style='margin-bottom: 20px;'></div>" + "<ul>" + "<li style='display: inline;'>US/Canada: +1-800-884-1721</li>" + "<li style='display: inline;'> Russia: +7-812-648-2457</li>" + "<li style='display: inline;'> Sweden: +46-840-83-9915</li>" + "<li style='display: inline;'> Singapore: +65-3159-0515</li>" + "<li style='display: inline;'> Email: info@firebirdtours.com</li>" + "</ul>" + "</div><div class='clear'></div>");
+		$("div#wsite-content").prepend(
+			"<div style='float: right; margin: -15px 0 15px 0;'>" +
+			"<div style='margin-bottom: 20px;'></div>" +
+				"<ul>" +
+					"<li style='display: inline;'>US/Canada: +1-800-884-1721</li>" +
+					"<li style='display: inline;'> Russia: +7-812-648-2457</li>" +
+					"<li style='display: inline;'> Sweden: +46-840-83-9915</li>" +
+					"<li style='display: inline;'> Singapore: +65-3159-0515</li>" +
+					"<li style='display: inline;'> Email: info@firebirdtours.com</li>" +
+				"</ul>" +
+			"</div>" +
+			"<div class='clear'></div>");
+
 		window.print();
 	}
 
