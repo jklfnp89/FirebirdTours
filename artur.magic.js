@@ -97,7 +97,7 @@ $(document).ready(function() {
 
 		if(typeof $_GET['utm_term'] != "undefined")
 		{
-			self.append('<input type="hidden" name="utm_term__c" value="' + $_GET['utm_term'] + '">');
+			self.append('<input type="hidden" name="utm_term__c" value="' + decodeURIComponent($_GET['utm_term']) + '">');
 		}
 
 		// country + phone
