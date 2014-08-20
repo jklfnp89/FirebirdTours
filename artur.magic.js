@@ -68,7 +68,8 @@ $(document).ready(function() {
 
 			forms.find("input[name=phone][transformer=intlTelInput]").intlTelInput({
 				defaultCountry: response.country.toLowerCase(),
-				preferredCountries: [ "us", "ca", "au", "hk", "sg", "gb" ]
+				preferredCountries: [ "us", "ca", "au", "hk", "sg", "gb", "se" ],
+				responsiveDropdown: true
 			});
 
 			forms.find("select[name=country]").val(response.country.toUpperCase());
