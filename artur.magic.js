@@ -2,12 +2,6 @@ $(document).ready(function() {
 
 	// ...
 
-	var $_USER = {};
-
-	$.get("http://ip" + "in" + "fo.io", function(response) {
-		$_USER = response;
-	}, "jsonp");
-
 	var $_URL = {
 		'fullAddress': window.location.href,
 		'justAddress': window.location.protocol + '//' + window.location.host + window.location.pathname,
@@ -65,15 +59,32 @@ $(document).ready(function() {
 	forms.find("select[required]").attr("x-moz-errormessage", "Fill this field, please");
 	forms.find("textarea[required]").attr("x-moz-errormessage", "Fill this field, please");
 
+	$.get("http://ipinfo.io", function(response) {
+		if(response.hasOwnProperty("ip"))
+		{
+			forms.append('<input type="hidden" name="IP_address__c" value="' + response.ip + '">');
+			forms.append('<input type="hidden" name="IP_city__c" value="' + response.city + '">');
+			forms.append('<input type="hidden" name="IP_country__c" value="' + response.country + '">');
+
+			forms.find("input[name=phone][transformer=intlTelInput]").intlTelInput({
+				defaultCountry: response.country.toLowerCase(),
+				preferredCountries: [ "us", "ca", "au", "hk", "sg", "gb" ]
+			});
+
+			forms.find("select[name=country]").val(response.country.toUpperCase());
+			forms.find("select[name=country][transformer=selectize]").selectize({
+				"dropdownParent": "body"
+			});
+		}
+	}, "jsonp");
+
 	forms.each(function() {
 
 		var self = $(this);
 
-		self.append('<input type="hidden" name="Browser__c" value="' + browserName + '">');
+		// ...
 
-		self.append('<input type="hidden" name="IP_address__c" value="' + $_USER.ip + '">');
-		self.append('<input type="hidden" name="IP_city__c" value="' + $_USER.city + '">');
-		self.append('<input type="hidden" name="IP_country__c" value="' + $_USER.country + '">');
+		self.append('<input type="hidden" name="Browser__c" value="' + browserName + '">');
 
 		if(self.find("input[type=hidden][name=Itinerary__c]").length <= 0)
 		{
@@ -105,45 +116,6 @@ $(document).ready(function() {
 		{
 			self.append('<input type="hidden" name="utm_term__c" value="' + decodeURIComponent($_GET['utm_term']) + '">');
 		}
-
-		// country + phone
-
-		var intlTelField = self.find("input[type=tel][transformer=intlTelInput]").intlTelInput({
-			defaultCountry: $_USER.country.toLowerCase(),
-			preferredCountries: [ "us", "ca", "au", "hk", "sg", "gb" ]
-		});
-
-		self.find("select[name=country]").val($_USER.country.toUpperCase());
-		self.find("select[name=country][transformer=selectize]").selectize({
-			"dropdownParent": "body",
-			onChange: function(value) {
-
-				console.log(this);
-				console.log("====== ^^ this, vv value ======");
-				console.log(value);
-
-				var phoneField = self.find("input[type=tel][name=phone]");
-				var customNotesField = self.find('input[type=hidden][name=custom_notes__c]');
-
-				if(intlTelField.length > 0)
-				{
-					intlTelField.selectCountry(value.toLowerCase());
-					customNotesField.val("Country: " + value + " (" + intlTelField.getSelectedCountryData().name + "[" + intlTelField.getSelectedCountryData().dialCode + "])");
-				}
-				else
-				{
-					// TODO: подгрузить код страны в поле с телефоном и положить его в поле Country
-
-					customNotesField.val("Country: " + value);
-				}
-
-				// ...
-
-				phoneField.focus();
-			}
-		});
-
-		// country + phone
 
 		var returnURLField = self.find("input[type=hidden][name=retURL]");
 		returnURLField.val(returnURLField.val() + "?referrer=" + $_URL.justAddress);
