@@ -35,6 +35,11 @@ $(document).ready(function() {
 		return associativeObject;
 	}();
 
+	var $_PAGE = {
+		layoutName: typeof $("body").data("layout-name") == undefined ? "" : $("body").data("layout-name"),
+		isLanding: (($("body").attr("class").indexOf('landing') + 1) == 0) ? false : true
+	};
+
 	var browserName = function determineBrowserName() {
 
 		var userAgent = navigator.userAgent.toLowerCase();
@@ -48,6 +53,8 @@ $(document).ready(function() {
 
 		return 'Undefined';
 	}();
+
+	$("form[mask=shadow-fiend-anti-spam]").attr("action", "https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8");
 
 	var signUpForms = $("form[action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'].sign-up-our-custom-form");
 	signUpForms.find("input:not(:hidden)").attr("required", "");
@@ -213,7 +220,7 @@ $(document).ready(function() {
 		}, 1000);
 	});
 
-	if(($("body").attr("class").indexOf('landing') + 1) == 0 && $.cookie("do_not_show_idle_pop_up") != 1)
+	if($_PAGE.isLanding == false && $.cookie("do_not_show_idle_pop_up") != 1)
 	{
 		$.idleTimer(1000 * 3);
 		$(document).bind("idle.idleTimer", function() {
