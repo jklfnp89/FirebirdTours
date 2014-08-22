@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/files/theme/sitemap.xml" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="/files/theme/jquery.ui.totop.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="/files/theme/jquery.notify.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="/files/theme/intlTelInput.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="/files/theme/jquery.selectize.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="/files/theme/jquery.idle-timer.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="/files/theme/artur.modals.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+    <script src="/files/theme/artur.magic.js" charset="utf-8" language="javascript" type="text/javascript"></script>
+
+    <link href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="/files/theme/intlTelInput.css" rel="stylesheet" type="text/css">
+    <link href="/files/theme/artur.modals.css" rel="stylesheet" type="text/css">
+    <link href="/files/theme/jquery.selectize.css" rel="stylesheet" type="text/css">
+
+    <script charset="utf-8" language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            $().UItoTop();
+
+            $('.imageGallery a').each(function() {
+                if($(this).find('.galleryCaptionHolder').length <= 0)
+                {
+                    $(this).append('<div class="galleryImage-overlay"></div>');
+                }
+            });
+
+            $('.product a').each(function() {
+                var _this = $(this);
+                _this.find('img').load(function() {
+                    var imgWidth  = $(this).width();
+                    var imgHeight = $(this).height();
+                    _this.append('<div class="galleryImage-overlay" style="width:'+imgWidth+'px; height:'+imgHeight+'px"></div>');
+                });
+            });
+
+            $("div#tabs").tabs();
+        });
+    </script>
+
+</head>
+<body class='itinerary-layout  wsite-theme-light' data-layout-name="itinerary">
+<div id="wrapper">
+    <div id="landing_header" class="header_image wsite-header"></div>
+    <div id="header_container">
+        <div id="header_wrapper">
+            <table id="header">
+                <tr>
+                    <td id="logo">{logo}</td>
+                    <td id="header-right">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td id="phonetext">{phone:content}</td>
+                                <td id="social">{social}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" id="search">{search}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div id="menu_wrapper">
+                <div class="menu clearfix">
+                    {menu}
+                    <div id="menu_shadow"></div>
+                </div>
+            </div>
+            <script type="text/javascript" src="/files/theme/artur.breadcrumbs.js"></script>
+            <div id="landing_area" class="clearfix">
+                <div id="landing_content">
+                    <h2>{headline:text global="false"}</h2>
+                    <p>{headline-paragraph:text global="false"}</p>
+                    {action:button global="false"}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content_wrapper">
+        <div id="content" class="itinerary-layout">
+            {content}
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">Overview</a></li>
+                                <li><a href="#tabs-2">Included</a></li>
+                                <li><a href="#tabs-3">Dates & Rates</a></li>
+                                <li><a href="#tabs-4">Map</a></li>
+                                <li><a href="#tabs-5">Gallery</a></li>
+                                <li><a href="#tabs-6">Experiences</a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <p>{content1:content global="false"}</p>
+                            </div>
+                            <div id="tabs-2">
+                                <p>{content2:content global="false"}</p>
+                            </div>
+                            <div id="tabs-3">
+                                <p>{content3:content global="false"}</p>
+                            </div>
+                            <div id="tabs-4">
+                                <p>{content4:content global="false"}</p>
+                            </div>
+                            <div id="tabs-5">
+                                <p>{content5:content global="false"}</p>
+                            </div>
+                            <div id="tabs-6">
+                                <p>{content6:content global="false"}</p>
+                            </div>
+
+                        </div>
+                    </td>
+                    <td>
+                        <table class="itinerary-right-sidebar-table">
+                            <tbody>
+                            <tr style="color: #979797;">
+                                <td class="email-tour-modal-window-button"><img src="/files/theme/mail-this-tour-icon.png"> Email program</td>
+                                <td>
+                                    <a href="#" class="empty-link print-tour">
+                                        <img src="/files/theme/print-this-tour-icon.png"> Print this page
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="empty">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr style="height: 45px;">
+                                <td style="line-height: 15px; vertical-align: middle;">Starting from:<br><span class="notice">* Includes deposit, taxes & fees</span></td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    {startingFromPrice:text global="false"}
+                                </td>
+                            </tr>
+                            <tr class="empty">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr style="height: 35px;">
+                                <td style="vertical-align: middle;">Today's deposit:</td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    {todaysDepositPrice:text global="false"}
+                                </td>
+                            </tr>
+                            <tr class="empty">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="single">
+                                    <a class="artur-custom-button artur-custom-button-red contact-us-modal-window-button" style="margin-top: 15px;" href="#">
+                                        <span>BOOK NOW</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="single">
+                                    <a class="artur-custom-button artur-custom-button-default contact-us-modal-window-button" style="margin-top: 5px;" href="#">
+                                        <span>EMAIL US</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="single" style="margin-top: 15px; color: #272829; font-size: 14px; font-family: Tahoma;">CALL US TOLL FREE ✆ 1-800-884-1721</td>
+                            </tr>
+                            <tr>
+                                <td class="single">
+                                    {rightBlockMagicBlock:content global="false"}
+                                </td>
+                            <tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="draggable_footer_wrapper">
+            <div id="draggable_footer">
+                {footer-content:content}
+            </div>
+        </div>
+        <div id="copyright_area_wrapper">
+            <div id="copyright_area">
+                {copyright-area:content}
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="email-tour-modal-window" class="sign-up-our-custom-form artur-modal-window" method="POST" mask="shadow-fiend-anti-spam" target="secret-iframe">
+
+    <div class="close-modal-window" title="Close window">X</div>
+
+    <label class="modal-window-caption">Send program to email</label>
+
+    <hr class="between-form-caption-and-form-content">
+
+    <input type="hidden" name="oid" value="00D80000000L8c8">
+    <input type="hidden" name="retURL" value="">
+    <input type="hidden" name="Site__c" value="FT">
+    <input type="hidden" name="Sign_up_source__c" value="Emailed program">
+    <input type="hidden" name="LeadSource" value="Web">
+    <input type="hidden" name="recordType" value="012800000003DiY">
+    <input type="hidden" name="Itinerary__c" value="">
+    <input type="hidden" id="Daddy_Analytics_Token" name="00NC0000005Geab">
+    <input type="hidden" id="Daddy_Analytics_WebForm_URL" name="00NC0000005Geah">
+
+    <div class="form-part">
+        <div class="wsite-form-field">
+            <label for="your_name_in_email-tour" class="wsite-form-label">
+                Your name:
+                <span class="form-required"></span>
+            </label>
+
+            <div class="wsite-form-input-container">
+                <input id="your_name_in_email-tour" class="wsite-form-input wsite-input wsite-input-width-370px" type="text" required="" name="Sent_from__c">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-part">
+        <div class="wsite-form-field wsite-name-field">
+            <label class="wsite-form-label" for="first_name_in_email-tour">
+                Recipient's name:
+                <span class="form-required">*</span>
+            </label>
+
+            <div class="clear"></div>
+
+            <div class="wsite-form-input-container wsite-form-left wsite-form-input-first-name">
+                <input id="first_name_in_email-tour" class="wsite-form-input wsite-input" type="text" name="first_name" required="">
+                <label class="wsite-form-sublabel" for="first_name_in_email-tour">First</label>
+            </div>
+            <div class="wsite-form-input-container wsite-form-right wsite-form-input-last-name">
+                <input id="last_name_in_email-tour" class="wsite-form-input wsite-input" type="text" name="last_name">
+                <label class="wsite-form-sublabel" for="last_name_in_email-tour">Last</label>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="form-part">
+        <div class="wsite-form-field">
+            <label for="email_in_email-tour" class="wsite-form-label">
+                Enter email address where to send this program:
+                <span class="form-required">*</span>
+            </label>
+
+            <div class="wsite-form-input-container">
+                <input id="email_in_email-tour" class="wsite-form-input wsite-input wsite-input-width-370px" type="email" required="" name="email">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-part">
+        <div class="wsite-form-field">
+            <label class="wsite-form-label" for="description_in_email-tour">
+                Add a note:
+                <span class="form-required"></span>
+            </label>
+            <div class="wsite-form-input-container">
+                <textarea id="description_in_email-tour" class="wsite-form-input wsite-input wsite-input-width-370px" name="description" style="height: 100px"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <button class="wsite-button" type="submit" name="submit">
+        <span class="wsite-button-inner">Submit</span>
+    </button>
+
+</form>
+
+<form id="contact-us-modal-window" class="sign-up-our-custom-form artur-modal-window" method="POST" mask="shadow-fiend-anti-spam" target="secret-iframe">
+
+    <div class="close-modal-window" title="Close window">X</div>
+
+    <label class="modal-window-caption">Contact us</label>
+
+    <hr class="between-form-caption-and-form-content">
+
+    <input type="hidden" name="oid" value="00D80000000L8c8">
+    <input type="hidden" name="retURL" value="">
+    <input type="hidden" name="Site__c" value="FT">
+    <input type="hidden" name="Sign_up_source__c" value="Pop-up">
+    <input type="hidden" name="LeadSource" value="Web">
+    <input type="hidden" name="recordType" value="012800000003DiY">
+    <input type="hidden" name="Itinerary__c" value="">
+    <input type="hidden" id="Daddy_Analytics_Token" name="00NC0000005Geab">
+    <input type="hidden" id="Daddy_Analytics_WebForm_URL" name="00NC0000005Geah">
+
+    <div class="form-part">
+        <div class="wsite-form-field wsite-name-field">
+            <label class="wsite-form-label" for="first_name_in_contact-us-modal-window">
+                Your name:
+                <span class="form-required">*</span>
+            </label>
+
+            <div class="clear"></div>
+
+            <div class="wsite-form-input-container wsite-form-left wsite-form-input-first-name">
+                <input id="first_name_in_contact-us-modal-window" class="wsite-form-input wsite-input" type="text" required="" name="first_name">
+                <label class="wsite-form-sublabel" for="first_name_in_contact-us-modal-window">First</label>
+            </div>
+            <div class="wsite-form-input-container wsite-form-right wsite-form-input-last-name">
+                <input id="last_name_in_contact-us-modal-window" class="wsite-form-input wsite-input" type="text" name="last_name">
+                <label class="wsite-form-sublabel" for="last_name_in_contact-us-modal-window">Last</label>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="form-part">
+        <div class="wsite-form-field">
+            <label for="phone_in_contact-us-modal-window" class="wsite-form-label">
+                Your phone number:
+                <span class="form-required">*</span>
+            </label>
+
+            <div class="wsite-form-input-container">
+                <input id="phone_in_contact-us-modal-window" transformer="intlTelInput" class="wsite-form-input wsite-input wsite-input-width-370px" required="" type="tel" name="phone">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-part">
+        <div class="wsite-form-field">
+            <label for="email_in_contact-us-modal-window" class="wsite-form-label">
+                Your e-mail:
+                <span class="form-required">*</span>
+            </label>
+
+            <div class="wsite-form-input-container">
+                <input id="email_in_contact-us-modal-window" class="wsite-form-input wsite-input wsite-input-width-370px" type="email" required="" name="email">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-part">
+        <div class="wsite-form-field">
+            <label class="wsite-form-label" for="description_in_contact-us-modal-window">
+                Your message:
+                <span class="form-required">*</span>
+            </label>
+            <div class="wsite-form-input-container">
+                <textarea id="description_in_contact-us-modal-window" class="wsite-form-input wsite-input wsite-input-width-370px" name="description" required="" style="height: 100px"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <button class="wsite-button" type="submit" name="submit">
+        <span class="wsite-button-inner">Submit</span>
+    </button>
+
+</form>
+
+</body>
+</html>
