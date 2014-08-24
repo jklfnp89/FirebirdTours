@@ -7,13 +7,25 @@ var breadcrumbs = function createBreadcrumbs() {
 
 		if($("#active").length <= 0)
 		{
-			if($("ul.wsite-menu li.wsite-nav-current").length > 0)
+			if($("li.wsite-nav-current").length > 0)
 			{
-				var currentSubElement = $("ul.wsite-menu li.wsite-nav-current");
-				var parentElement = currentSubElement.closest(".wsite-menu-wrap").parent("li");
+				var currentElement = $("li.wsite-nav-current");
+				var betweenCurrentAndHeadParent = currentElement.parents("li[id^='wsite-nav']");
+				var parentElement = currentElement.closest("li[id^='pg']");
 
 				breadcrumbs.push({name: parentElement.children("a").text(), url: parentElement.children("a").attr("href")});
-				breadcrumbs.push({name: currentSubElement.children("a").text(), url: currentSubElement.children("a").attr("href")});
+
+				for(var i = (betweenCurrentAndHeadParent.length - 1); i >= 0; i--)
+				{
+					var item = $(betweenCurrentAndHeadParent[i]).children("a");
+
+					var itemText = item.children("span.wsite-menu-title").length > 0 ? item.children("span.wsite-menu-title").text() : item.text();
+					var itemURL = item.attr("href");
+
+					breadcrumbs.push({name: itemText, url: itemURL});
+				}
+
+				breadcrumbs.push({name: currentElement.children("a").children("span.wsite-menu-title").length > 0 ? currentElement.children("a").children("span.wsite-menu-title").text() : currentElement.children("a").text(), url: currentElement.children("a").attr("href")});
 			}
 		}
 		else if($("#active").length > 0)
