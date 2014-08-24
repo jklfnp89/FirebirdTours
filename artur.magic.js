@@ -321,4 +321,6 @@ $(document).ready(function() {
 	var htmlOfButton = '<a class="wsite-button" href="https://my.firebirdtours.com/en/my/overview">' + '<span class="wsite-button-inner">My account</span>' + '</a>';
 	$("td#header-right td#search span.wsite-search").after(htmlOfButton);
 
+	$().UItoTop();
+
 });
