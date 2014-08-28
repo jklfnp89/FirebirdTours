@@ -3,7 +3,7 @@ var breadcrumbs = function createBreadcrumbs() {
 	{
 		var breadcrumbs = [];
 
-		breadcrumbs.push({name: 'Main page', url: '/'});
+		breadcrumbs.push({name: 'Home', url: '/'});
 
 		if($("#active").length <= 0)
 		{
@@ -46,14 +46,14 @@ $(document).ready(function() {
 	{
 		var breadcrumbsHTMLtoInsert = '';
 
-		breadcrumbsHTMLtoInsert = '<ul>';
+		breadcrumbsHTMLtoInsert = '<ul xmlns:v="http://rdf.data-vocabulary.org/#">';
 
 		for(var i = 0; i < breadcrumbs.length; i++)
 		{
-			breadcrumbsHTMLtoInsert += '<li>';
-			breadcrumbsHTMLtoInsert += '<a href="' + breadcrumbs[i].url + '">';
-			breadcrumbsHTMLtoInsert += breadcrumbs[i].name;
-			breadcrumbsHTMLtoInsert += '</a>';
+			breadcrumbsHTMLtoInsert += '<li typeof="v:Breadcrumb">';
+				breadcrumbsHTMLtoInsert += '<a href="' + breadcrumbs[i].url + '" rel="v:url" property="v:title">';
+					breadcrumbsHTMLtoInsert += breadcrumbs[i].name;
+				breadcrumbsHTMLtoInsert += '</a>';
 			breadcrumbsHTMLtoInsert += '</li>';
 		}
 
