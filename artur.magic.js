@@ -54,7 +54,7 @@ $(document).ready(function() {
 		return 'Undefined';
 	}();
 
-	$("form[mask=shadow-fiend-anti-spam]").attr("action", "https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8");
+	$("form[mask=shadow-fiend-an" + "ti-sp" + "am]").attr("ac" + "ti" + "on", "https:" + "//ww" + "w.salesforce" + "." + "com/servlet" + "/servlet.WebToLead?encoding=UTF-8");
 
 	var signUpForms = $("form[action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8'].sign-up-our-custom-form");
 	signUpForms.find("input:not(:hidden)").attr("required", "");
