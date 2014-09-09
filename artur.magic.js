@@ -175,8 +175,10 @@ $(document).ready(function() {
 				"<ul>" +
 					"<li style='display: inline;'>US/Canada: +1-800-884-1721</li>" +
 					"<li style='display: inline;'>  Russia: +7-812-648-2457</li>" +
-					"<li style='display: inline;'>  Sweden: +46-840-83-9915</li>" +
 					"<li style='display: inline;'>  Singapore: +65-3159-0515</li>" +
+					"<li style='display: inline;'>  Hong Kong: +852-5808-4569</li>" +
+					"<li style='display: inline;'>  Indonesia: +803-321-8115</li>" +
+					"<li style='display: inline;'>  Malaysia: +1-800-81-5527</li>" +
 					"<li style='display: inline;'>  Email: info@firebirdtours.com</li>" +
 				"</ul>" +
 			"</div>" +
@@ -274,7 +276,7 @@ $(document).ready(function() {
 
 	var otherPhoneNumbersBlock = $("div.other-phone-numbers-wonderful-block");
 	var currentPhoneNameAndNumberBlock = $("div.select-phone-by-region > div.phone-value");
-	var availablePhoneNumbersCodes = ['US', 'RU', 'SW', 'SG'];
+	var availablePhoneNumbersCodes = ['US', 'RU', 'SG', 'HK', 'ID', 'MY'];
 	var regionGetParameter = $_GET['region'];
 	if(typeof regionGetParameter != "undefined")
 	{
