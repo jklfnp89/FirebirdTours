@@ -37,7 +37,8 @@ $(document).ready(function() {
 
 	var $_PAGE = {
 		layoutName: typeof $("body").data("layout-name") == undefined ? "" : $("body").data("layout-name"),
-		isLanding: (($("body").attr("class").indexOf('landing') + 1) == 0) ? false : true
+		isLanding: (($("body").attr("class").indexOf("landing") + 1) == 0) ? false : true,
+		isThankYou: ((window.location.pathname.indexOf("thank-you") + 1) == 0) ? false : true
 	};
 
 	var browserName = function determineBrowserName() {
@@ -222,7 +223,7 @@ $(document).ready(function() {
 		}, 1000);
 	});
 
-	if($_PAGE.isLanding == false && $.cookie("do_not_show_idle_pop_up") != 1)
+	if($_PAGE.isLanding == false && $_PAGE.isThankYou == false && $.cookie("do_not_show_idle_pop_up") != 1)
 	{
 		$.idleTimer(1000 * 3);
 		$(document).bind("idle.idleTimer", function() {
